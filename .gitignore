@@ -1,0 +1,7 @@
+.env
+data/*.db
+__pycache__/
+**/__pycache__/
+.venv/
+.venv-source-github/
+*.pyc

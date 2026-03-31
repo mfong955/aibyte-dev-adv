@@ -1,0 +1,6 @@
+airbyte
+duckdb
+anthropic
+streamlit
+python-dotenv
+pandas
