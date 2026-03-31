@@ -52,7 +52,7 @@ Q: "What are the most common issue categories?"
 SQL: SELECT category, COUNT(*) as count FROM enrichment GROUP BY category ORDER BY count DESC
 
 Q: "Which issues are advocate opportunities?"
-SQL: SELECT i.title, i.labels, e.advocate_action
+SQL: SELECT i.title, i.html_url, i.labels, e.advocate_action
      FROM issues i JOIN enrichment e ON i.issue_number = e.issue_number
      WHERE e.advocate_opportunity = true
      ORDER BY i.created_at DESC LIMIT 10
@@ -63,11 +63,20 @@ SQL: SELECT value as tool, COUNT(*) as count
      json_each('["' || replace(tools_mentioned, ', ', '","') || '"]')
      WHERE tools_mentioned != ''
      GROUP BY value ORDER BY count DESC LIMIT 15
+
+Q: "What documentation gaps come up most often?"
+SQL: SELECT e.pain_point, i.html_url, i.title
+     FROM enrichment e JOIN issues i ON i.issue_number = e.issue_number
+     WHERE e.category = 'documentation-gap'
+     ORDER BY i.comment_count DESC LIMIT 15
 """
 
 SQL_SYSTEM_PROMPT = f"""You are a SQL expert working with a DuckDB database containing GitHub issue data.
 {SCHEMA_CONTEXT}
 {FEW_SHOT_EXAMPLES}
+IMPORTANT: Whenever the query returns individual issues (not pure aggregates), always include i.html_url \
+in the SELECT so users can navigate to the issue. For aggregate queries (GROUP BY with COUNT), \
+include html_url only if it makes sense (e.g., use ANY_VALUE(i.html_url) to show a representative link).
 Return SQL only. No explanation, no markdown fences, no preamble.
 The query must be valid DuckDB SQL."""
 
