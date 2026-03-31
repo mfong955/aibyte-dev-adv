@@ -17,6 +17,7 @@ EXAMPLE_QUESTIONS = [
     "What features are developers requesting most?",
     "Give me 3 specific advocate actions I can take based on the Airbyte community issues",
     "What connectors or integrations are mentioned most?",
+    "What category has the most issues? Please list the ones where the community is frustrated and list them according to the number of comments, descending. Include the title, url, comments, pain points, unmet needs, advocate actions, community sentiment, and issue category.",
 ]
 
 
