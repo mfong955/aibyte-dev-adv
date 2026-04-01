@@ -13,7 +13,7 @@ DB_PATH = Path(__file__).parent.parent / "data" / "community.db"
 
 EXAMPLE_QUESTIONS = [
     "What documentation gaps come up most often?",
-    "Which issues represent the best developer advocate opportunities?",
+    "Which issues represent the best advocate opportunities?",
     "What features are developers requesting most?",
     "Give me 3 specific advocate actions I can take based on the Airbyte community issues",
     "What connectors or integrations are mentioned most?",
@@ -85,7 +85,7 @@ st.set_page_config(
 
 st.title("Airbyte Issue Analyst")
 st.caption(
-    "Surfacing developer advocacy opportunities from airbytehq/airbyte GitHub issues "
+    "Surfacing advocacy opportunities from airbytehq/airbyte GitHub issues "
     "— powered by PyAirbyte + Claude"
 )
 
@@ -124,7 +124,7 @@ try:
         "Advocate opportunities",
         f"{summary['advocate_count']} ({summary['advocate_pct']:.0f}%)",
         help=(
-            "Issues where Claude judged there is a concrete action a Developer Advocate "
+            "Issues where Claude judged there is a concrete action an Advocate "
             "could take — for example: writing a tutorial to address a documentation gap, "
             "creating a FAQ for a recurring question, aggregating feature demand for the "
             "product team, or proactively communicating a workaround for a confusing bug. "
@@ -140,9 +140,9 @@ try:
             "Categories: documentation-gap (missing or unclear docs), "
             "feature-request (new functionality asked for), "
             "question (user is confused and seeking help), "
-            "bug-with-advocacy-angle (a bug that also reveals UX confusion a DA could address), "
+            "bug-with-advocacy-angle (a bug that also reveals UX confusion an advocate could address), "
             "integration-request (request for a new connector or integration), "
-            "other (catch-all). These categories map directly to DA content and outreach opportunities."
+            "other (catch-all). These categories map directly to advocate content and outreach opportunities."
         ),
     )
     col4.metric(
@@ -190,7 +190,7 @@ try:
     chart_state = st.altair_chart(chart, use_container_width=True, on_select="rerun")
     st.caption(
         "Issue breakdown by category — assigned by Claude based on issue title, labels, and body. "
-        "Each category maps to a distinct type of developer advocacy action. "
+        "Each category maps to a distinct type of advocacy action. "
         "Hover to see count and percentage. Click a bar to drill into its issues; double-click to clear."
     )
 
