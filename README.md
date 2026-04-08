@@ -2,7 +2,7 @@
 
 An AI-powered GitHub issue analyst that uses PyAirbyte's `source-github` connector to ingest issues from the `airbytehq/airbyte` repository into DuckDB, enriches them with Claude-powered structured analysis, then exposes a natural language Q&A agent for surfacing developer advocacy opportunities.
 
-Built as an interview demo for a Senior Developer Advocate role at Airbyte.
+**Built as an interview demo for a Senior Developer Advocate role at Airbyte.**
 
 ---
 
@@ -15,6 +15,29 @@ Three things this demo proves:
 1. **PyAirbyte works as real data infrastructure** — the actual `source-github` connector ingests live GitHub issues, no mocks
 2. **Claude handles both batch enrichment and conversational analysis** — structured JSON extraction plus text-to-SQL Q&A
 3. **The output is genuinely useful** — community pain points mapped to concrete developer advocacy actions
+
+---
+
+## Screenshots
+
+### Summary dashboard
+![Airbyte Issue Analyst dashboard](images/Airbyte%20issue%20analysis.png)
+
+The main dashboard surfaces four at-a-glance metrics — total issues analyzed, advocate opportunity count, top category, and dominant community sentiment — alongside a bar chart breaking issues down by category. This lets you instantly answer "where is developer friction concentrated?" without writing a single query, turning a firehose of GitHub noise into a prioritised action list.
+
+---
+
+### Natural language Q&A with generated SQL
+![Prompting against AI-enriched dataset](images/Prompting%20against%20AI-enriched%20datatset.png)
+
+Ask a plain-English question and the agent generates SQL against the enriched DuckDB schema, runs it, and returns a structured interpretation with direct links to the relevant GitHub issues. The generated SQL is exposed in a collapsible expander so you can verify exactly what the agent queried — making the analysis auditable, not a black box.
+
+---
+
+### Drilling down and verifying enrichment
+![Drilling down and verifying AI-enriched dataset](images/Drilling%20down%20and%20verifying%20AI-enriched%20dataset.png)
+
+Clicking a category bar filters the issue table to matching rows, showing titles and live GitHub URLs side-by-side. This makes it easy to sanity-check Claude's enrichment against the original issues — confirming that the AI labels are grounded in real developer feedback, not hallucinated categories.
 
 ---
 
