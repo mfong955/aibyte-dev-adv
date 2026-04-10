@@ -1,8 +1,8 @@
-# Airbyte Issue Analyst (Built in 1 day for interview demo)
+# Airbyte Issue Analyst (2 days to build & prepare demo for minimum viable product assignment)
 
 An AI-powered GitHub issue analyst that uses PyAirbyte's `source-github` connector to ingest issues from the `airbytehq/airbyte` repository into DuckDB, enriches them with Claude-powered structured analysis, then exposes a natural language Q&A agent for surfacing developer advocacy opportunities.
 
-**Built as an interview demo for a Senior Developer Advocate role at Airbyte.**
+**Built & prepped (2 day assignment) as a minimum viable product demo for final stages of interviews.**
 
 ---
 
